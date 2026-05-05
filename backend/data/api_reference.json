@@ -1,0 +1,8 @@
+{
+  "allowed_modules": [
+    "isaacsim",
+    "isaacsim.core.api",
+    "isaacsim.robot.wheeled_robots"
+  ],
+  "notes": "Beta v0 placeholder API surface; tighten in Step 2 validator."
+}

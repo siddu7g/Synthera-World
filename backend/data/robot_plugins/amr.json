@@ -1,0 +1,11 @@
+{
+  "category": "amr",
+  "controllers": [
+    "differential_controller"
+  ],
+  "supported_tasks": [
+    "drive to point",
+    "patrol waypoints",
+    "avoid obstacles"
+  ]
+}

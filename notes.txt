@@ -1,0 +1,13 @@
+CONDA ACTIVATION: conda activate synthera-py310
+
+FOR BACKEND: uvicorn main:app --reload --port 8765
+
+curl -X POST http://localhost:8765/generate   -H "Content-Type: application/json"   -d '{"robot":{"category":"humanoid","asset_name":"Unitree H1","asset_path":"/Isaac/Robots/Unitree/H1/h1.usd"},"scene":{"environment":"empty","lighting":"day","obstacles":false},"task":{"description":"stand still for the full duration","duration_seconds":20},"sensors":{"camera":false,"imu":false,"lidar":false},"output":{"headless":true,"export_telemetry":false}}'
+
+TO GENERATE ID, COPY THE ID TO SIMULATE 
+
+curl -N -X POST http://localhost:8765/simulate   -H "Content-Type: application/json"   -d '{"generation_id":"73d1f306-5d82-442f-b93c-1b703a1ac6f2"}'
+
+FOR FRONTEND: /frontend$ npm run dev
+
+

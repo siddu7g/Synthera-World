@@ -1,0 +1,12 @@
+{
+  "category": "humanoid",
+  "controllers": [
+    "articulation_joint_position"
+  ],
+  "supported_tasks": [
+    "stand",
+    "walk forward",
+    "walk to waypoint",
+    "wave arm"
+  ]
+}

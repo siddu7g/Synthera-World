@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background:
+    radial-gradient(1200px 400px at 10% -10%, rgba(59, 130, 246, 0.2), transparent 60%),
+    radial-gradient(900px 300px at 100% 0%, rgba(168, 85, 247, 0.2), transparent 60%),
+    #020617;
+}
+
+.panel {
+  @apply rounded-xl border border-slate-800/80 bg-slate-900/85 p-4 shadow-xl shadow-black/20 backdrop-blur;
+}
+
+.panel-title {
+  @apply mb-2 text-sm font-semibold uppercase tracking-wide text-slate-300;
+}
+
+.input {
+  @apply w-full rounded-lg border border-slate-700 bg-slate-800/80 p-2 text-sm outline-none transition focus:border-indigo-400;
+}
+
+.badge {
+  @apply inline-flex items-center rounded-full border border-slate-700 bg-slate-800 px-2 py-0.5 text-xs text-slate-300;
+}
