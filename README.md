@@ -78,15 +78,6 @@ export ISAAC_SIM_PYTHON="$ISAAC_SIM_PATH/python.sh"
 
 Robot USDs are often in a separate assets pack. The assets root must contain paths like `Isaac/Robots/Unitree/H1/h1.usd`:
 
-```bash
-export ISAAC_ASSETS_ROOT="$HOME/isaacsim_assets/Assets/Isaac/5.0"
-
-ls "$ISAAC_ASSETS_ROOT/Isaac/Robots/Unitree/H1/h1.usd"
-ls "$ISAAC_ASSETS_ROOT/Isaac/Robots/Clearpath/Jackal/jackal.usd"
-```
-
-If those files are missing, install or sync the Isaac Sim assets content for your version before continuing.
-
 **Path mapping:** Synthera resolves nucleus paths such as `/Isaac/Robots/Unitree/H1/h1.usd` to:
 
 `$ISAAC_ASSETS_ROOT/Isaac/Robots/Unitree/H1/h1.usd`
@@ -142,26 +133,7 @@ python3.10 scripts/validate_install.py
 python3.10 scripts/scan_assets.py
 ```
 
-- `validate_install.py` checks Python 3.10, `ISAAC_SIM_PATH`, and CUDA.
-- `scan_assets.py` writes `backend/data/asset_catalog.json`.
-
-Confirm robots were found:
-
-```bash
-cat backend/data/asset_catalog.json
-```
-
-Empty `humanoid` or `amr` arrays mean `ISAAC_ASSETS_ROOT` is wrong or assets are not installed.
-
-### 5. Smoke-test Isaac (recommended)
-
-```bash
-"$ISAAC_SIM_PYTHON" isaac_templates/humanoid_stand.py
-```
-
-If this runs headlessly without import errors, Isaac 5.0 and the H1 asset path are configured correctly.
-
-### 6. Start the backend
+### 5. Start the backend
 
 ```bash
 bash scripts/setup.sh
@@ -177,9 +149,7 @@ curl http://localhost:8765/health
 curl http://localhost:8765/assets
 ```
 
-`/health` should report `isaac_path_exists: True`.
-
-### 7. Start the frontend
+### 6. Start the frontend
 
 ```bash
 cd frontend
@@ -189,7 +159,7 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000). Configure a simulation, click **Generate**, then **Run**.
 
-### 8. API-only test (optional)
+### 7. API-only test (optional)
 
 ```bash
 curl -X POST http://localhost:8765/generate \
@@ -206,8 +176,6 @@ curl -X POST http://localhost:8765/generate \
     "output": { "headless": true, "export_telemetry": false }
   }'
 ```
-
-Use the returned `generation_id` with `/simulate` from the UI or your API client.
 
 ---
 
@@ -243,7 +211,6 @@ Every generated script passes five checks before it is returned or executed:
 2. Forbidden patterns (`omni.isaac.*`, `subprocess`, etc.)
 3. Allowed `isaacsim.*` API surface
 4. USD paths from the asset catalog
-5. `SimulationApp` instantiated before other `isaacsim` imports
 
 ---
 
@@ -262,8 +229,6 @@ synthera-world/
 ---
 
 ## Development without GPU
-
-Set `ISAAC_SIM_PYTHON=echo` in `.env` to dry-run the runner (prints the script path instead of launching Isaac Sim).
 
 ---
 
