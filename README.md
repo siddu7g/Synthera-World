@@ -1,6 +1,6 @@
 # Synthera World
 
-**Configure. Generate. Simulate.**
+![logo](isaac_templates/logo.png)
 
 Synthera World is a full-stack workspace for building NVIDIA Isaac Sim simulations without hand-writing boilerplate. Pick a humanoid or AMR robot, describe the task in natural language, get a validated Python script from an LLM, and run it locally with live log streaming.
 
